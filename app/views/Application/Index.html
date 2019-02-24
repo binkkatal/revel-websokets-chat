@@ -1,0 +1,35 @@
+{{set . "title" "Sign in"}}
+{{template "header.html" .}}
+
+<div id="home">
+  {{if .me}}
+  <div id="signin">
+    <form action="{{url "Application.EnterDemo"}}">
+      {{if .flash.error}}
+        <p class="error">
+          {{.flash.error}}
+        </p>
+      {{end}}
+      <input type="hidden" name="user" id="user" value="{{.me.name}}">
+        <span>Welcome {{.me.name}} !</span>
+        <input type="submit" id="enter" value="Enter the chat room">
+      </p>
+    </form>
+    
+  </div>
+
+  <form action="{{url "Application.LogOut"}}" method="POST">
+      <button class="btn btn-danger">Logout</button>
+  </form>
+
+  {{else}}
+    <a href="{{.authUrl}}">login With Facebook</a>
+  {{end}}
+</div>
+{{template "footer.html" .}}
+
+<script>
+  $('#logout').click(function(e) {
+    
+  });
+</script>
