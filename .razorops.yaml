@@ -1,0 +1,7 @@
+tasks:
+  build:
+    image: golang:1.11
+    environment:
+        CGO_ENABLED: 0
+    commands:
+      - go build -ldflags "-X main.Version=[[ .Env.CI_COMMIT_SHA ]]"
